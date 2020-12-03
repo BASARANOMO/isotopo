@@ -12,7 +12,7 @@ using namespace std;
 #define srcPath "."
 #endif
 // The path and name of the town file
-const string townFile = srcPath "/villes.txt";
+const string townFile = srcPath "/villes-UTF8.txt";
 
 // Study French isotoponyms
 int main() {
