@@ -67,11 +67,11 @@ int main() {
     intersection = townSetIntersection(setName, setCoor);
     printf("Number of towns in the intersection of set N and set C: %d\n", intersection.size());
 
-    int count = confusedTownCounter(intersection);
+    int count = confusingTownCounter(intersection);
     printf("There is/are %d town(s) one can be wrong when hearing that 'the town A is near the town B'.\n", count);
 
     // naive approach
-    // count = confusedTownCounter(set<Town>(towns.begin(), towns.end()));
+    // count = confusingTownCounter(set<Town>(towns.begin(), towns.end()));
     // printf("There is/are %d town(s) one can be wrong when hearing that 'the town A is near the town B'.\n", count);
 
     set<Town> testSet;
@@ -88,7 +88,7 @@ int main() {
     testSet.insert(Town("Paris", 28, 11));
     cout << "\nTest with artificial dataset:" << endl;
     for (auto it = testSet.begin(); it != testSet.end(); ++it) cout << *it << endl;
-    count = confusedTownCounter(testSet);
+    count = confusingTownCounter(testSet);
     printf("There is/are %d town(s) one can be wrong when hearing that 'the town A is near the town B'.\n", count);
     return 0;
 }

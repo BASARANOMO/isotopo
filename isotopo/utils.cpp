@@ -39,7 +39,7 @@ set<Town> townSetIntersection(const set<Town> setName, const set<Town> setCoor) 
 }
 
 // don't use set.find
-int confusedTownCounter(const set<Town> intersection) {
+int confusingTownCounter(const set<Town> intersection) {
 	int count = 0;
 	for (auto it1 = intersection.begin(); it1 != intersection.end(); it1++) {
 		set<Town> sameCoorTowns;
