@@ -13,6 +13,10 @@ using std::max;
 
 pair<float,float> geoToLambert93(float latitude,float longitude);
 
+bool Town::operator<(const Town& town) const {
+    return ((_name < town.name()) || (_name == town.name() && ( _lat < town.lat() || (_lat == town.lat() && _lon < town.lon()))));
+}
+
 // Construct a new town object given its name, latitude and longitude
 Town::Town(string name, float lat, float lon)
     : _name(name), _lat(lat), _lon(lon)

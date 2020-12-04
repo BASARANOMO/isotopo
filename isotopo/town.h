@@ -61,6 +61,8 @@ public:
     // Return number of towns read, or negative value if some error occurred
     static int read_file(string townFile, vector<Town>& towns,
                          float& xmin, float& ymin, float& xmax, float& ymax);
+
+    bool operator<(const Town&) const;
 };
 
 // Display town: name[lat,lon](x,y)

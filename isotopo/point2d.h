@@ -10,6 +10,7 @@ public:
     float x, y;
     // Create a new 2D point with given coordinates
     Point2D(float x0, float y0) : x(x0), y(y0) {}
+    bool operator<(const Point2D& pt) const;
 };
 
 // Display 2D point

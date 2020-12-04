@@ -5,6 +5,7 @@
 #include <cstdlib>
 
 #include "town.h"
+#include "utils.h"
 
 using namespace std;
 
@@ -41,6 +42,30 @@ int main() {
     cout << "A random town, using format \"name[lat,lon](x,y)\": "
          << towns[rand() % towns.size()] << endl;
 
-    // That's all folks
+    // Histogram of repeted town names
+    map<string, int> nameCounterMap;
+    nameCounterMap = nameCounter(towns);
+    printf("\nHistogram of repeted town names (Number of town names used by exactly i town(s)): \n");
+    counterHistogram<string>(nameCounterMap);
+
+    // Histogram of repeted coordinates
+    map<Point2D, int> coorCounterMap;
+    coorCounterMap = coorCounter(towns);
+    printf("\nHistogram of repeted coordinates (Number of coordinates shared by exactly i town(s)): \n");
+    counterHistogram<Point2D>(coorCounterMap);
+    printf("\n");
+
+    // Set of towns whose names are shared with other town(s)
+    set<Town> setName;
+    setName = sameNameSet(towns, nameCounterMap);
+    printf("Number of towns whose names are shared with other town(s): %d\n", setName.size());
+    // Set of towns whose coordinates are shared with other town(s)
+    set<Town> setCoor;
+    setCoor = sameCoorSet(towns, coorCounterMap);
+    printf("Number of towns whose coordinates are shared with other town(s): %d\n", setCoor.size());
+    // Intersection O(|N| + |C|)
+    set<Town> intersected;
+    intersected = townSetIntersection(setName, setCoor);
+    printf("Number of towns in the intersection of set N and set C: %d\n", intersected.size());
     return 0;
 }
