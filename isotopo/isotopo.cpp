@@ -6,7 +6,6 @@
 
 #include "town.h"
 #include "utils.h"
-
 using namespace std;
 
 #ifndef srcPath
@@ -64,8 +63,32 @@ int main() {
     setCoor = sameCoorSet(towns, coorCounterMap);
     printf("Number of towns whose coordinates are shared with other town(s): %d\n", setCoor.size());
     // Intersection O(|N| + |C|)
-    set<Town> intersected;
-    intersected = townSetIntersection(setName, setCoor);
-    printf("Number of towns in the intersection of set N and set C: %d\n", intersected.size());
+    set<Town> intersection;
+    intersection = townSetIntersection(setName, setCoor);
+    printf("Number of towns in the intersection of set N and set C: %d\n", intersection.size());
+
+    int count = confusedTownCounter(intersection);
+    printf("There is/are %d town(s) one can be wrong when hearing that 'the town A is near the town B'.\n", count);
+
+    // naive approach
+    // count = confusedTownCounter(set<Town>(towns.begin(), towns.end()));
+    // printf("There is/are %d town(s) one can be wrong when hearing that 'the town A is near the town B'.\n", count);
+
+    set<Town> testSet;
+    testSet.insert(Town("Trucville", 1, 1));
+    testSet.insert(Town("Trucville", 3, 5));
+    testSet.insert(Town("Trucville", 2, 8));
+    testSet.insert(Town("Machinbourg", 1, 1));
+    testSet.insert(Town("Machinbourg", 3, 5));
+    testSet.insert(Town("Happytown", 2, 8));
+    testSet.insert(Town("Happytown", 28, 11));
+    testSet.insert(Town("Happytown", 7, 15));
+    testSet.insert(Town("Crazycity", 1, 1));
+    testSet.insert(Town("Crazycity", 2, 8));
+    testSet.insert(Town("Paris", 28, 11));
+    cout << "\nTest with artificial dataset:" << endl;
+    for (auto it = testSet.begin(); it != testSet.end(); ++it) cout << *it << endl;
+    count = confusedTownCounter(testSet);
+    printf("There is/are %d town(s) one can be wrong when hearing that 'the town A is near the town B'.\n", count);
     return 0;
 }

@@ -28,3 +28,4 @@ set<Town> sameNameSet(const vector<Town>, map<string, int>);
 set<Town> sameCoorSet(const vector<Town>, map<Point2D, int>);
 set<Town> townSetIntersection(const set<Town>, const set<Town>);
 
+int confusedTownCounter(set<Town>);
